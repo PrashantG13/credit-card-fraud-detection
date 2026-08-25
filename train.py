@@ -7,8 +7,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 
-print("Credit Card Fraud Detection Project Start Ho Gaya Hai!")
-
 # Sample Data Create kar rahe hain (Fraud Detection Simulation)
 np.random.seed(42)
 data = {
@@ -38,7 +36,7 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Model ki performance dekhna
-print("\nModel Training Successful!")
+
 print("Accuracy Score:", accuracy_score(y_test, y_pred))
 
 # --- GRAPH BANANE KA CODE ---
@@ -54,4 +52,3 @@ plt.grid(True, linestyle='--', alpha=0.6)
 
 # Graph ko save karna
 plt.savefig('fraud_plot.png')
-print("\nFraud Analysis Graph 'fraud_plot.png' naam se successfully save ho gaya hai!")
