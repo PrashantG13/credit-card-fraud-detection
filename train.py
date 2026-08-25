@@ -1,14 +1,15 @@
 # Zaroori Libraries Import Karna
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 
 print("Credit Card Fraud Detection Project Start Ho Gaya Hai!")
 
-# Dummy/Sample Data Create kar rahe hain (Taaki bina heavy CSV ke code run ho sake)
-# Real project mein yahan Kaggle ki CSV file load ki jati hai (pd.read_csv('creditcard.csv'))
+# Sample Data Create kar rahe hain (Fraud Detection Simulation)
 np.random.seed(42)
 data = {
     'Time': np.random.randint(0, 172800, 1000),
@@ -39,3 +40,18 @@ y_pred = model.predict(X_test)
 # Model ki performance dekhna
 print("\nModel Training Successful!")
 print("Accuracy Score:", accuracy_score(y_test, y_pred))
+
+# --- GRAPH BANANE KA CODE ---
+plt.figure(figsize=(8, 5))
+feature_importances = model.feature_importances_
+features = X.columns
+
+sns.barplot(x=features, y=feature_importances, palette='viridis', hue=features, legend=False)
+plt.title('Fraud Detection - Feature Importance Graph')
+plt.xlabel('Features (Variables)')
+plt.ylabel('Importance Score')
+plt.grid(True, linestyle='--', alpha=0.6)
+
+# Graph ko save karna
+plt.savefig('fraud_plot.png')
+print("\nFraud Analysis Graph 'fraud_plot.png' naam se successfully save ho gaya hai!")
